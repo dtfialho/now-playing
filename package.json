@@ -1,0 +1,12 @@
+{
+  "name": "now-playing",
+  "version": "0.0.1",
+  "description": "The #NowPlaying page is a simple one-page app where visitors can visualize the most recent videos being shared on Twitter by people nearby",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Diego T. Fialho",
+  "email": "diego.tfialho@gmail.com",
+  "license": "MIT"
+}
