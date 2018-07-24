@@ -24,18 +24,31 @@ passport.use(new TwitterStrategy(
     callbackURL: 'http://localhost:3000/auth/twitter/callback',
     proxy: true
   },
-  async (accessToken, refreshToken, profile, done) => {
-    const existingUser = await User.findOne({ twitterID: profile.id });
+  async (accessToken, tokenSecret, profile, done) => {
+    const existingUser = await
+      User.findOne({ 'profile.twitterID': profile.id })
+      .select({
+        token: false,
+        tokenSecret: false
+      });
 
     if (!!existingUser) {
       return done(null, existingUser);
     }
 
     const user = await new User({
-      twitterID: profile.id,
-      username: profile.username,
-      displayName: profile.displayName
+      profile: {
+        twitterID: profile.id,
+        username: profile.username,
+        displayName: profile.displayName
+      },
+      token: accessToken,
+      tokenSecret: tokenSecret
     }).save();
+
+    user.set('tokenSecret', undefined, {strict: false} );
+    console.log(user)
+
     done(null, user);
   }
 ));

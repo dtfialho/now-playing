@@ -11,6 +11,7 @@ import Tweets from './Tweets/Tweets';
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
+    this.props.fetchTweets();
   }
 
   render() {

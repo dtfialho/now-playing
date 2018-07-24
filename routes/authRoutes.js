@@ -8,7 +8,7 @@ module.exports = app => {
   app.get('/auth/twitter/callback',
     passport.authenticate('twitter', { failureRedirect: '/' }),
     function(req, res) {
-      res.send(req.user);
+      res.redirect('/tweets');
     }
   );
 
@@ -18,6 +18,11 @@ module.exports = app => {
   });
 
   app.get('/api/current_user', (req, res) => {
-    res.send(req.user);
+    let { user } = req;
+    if (!!user) {
+      user.tokenSecret = undefined;
+    }
+
+    res.send(user);
   });
 };
