@@ -13,7 +13,7 @@ module.exports = app => {
       accessTokenSecret: req.user.tokenSecret
     });
 
-    client.getSearch({'q': '#nowplaying', 'geocode': '-22.5031833,-43.169863199999995,10km', count: 5}, (err, response, body) => {
+    client.getSearch({'q': 'youtube #nowPlaying', 'geocode': '-22.5031833,-43.169863199999995,10km', count: 5}, (err, response, body) => {
       res.status(400).send({error: 'erro'});
     }, (data) => {
       res.send(data);
