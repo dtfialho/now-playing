@@ -31,7 +31,11 @@ passport.use(new TwitterStrategy(
       return done(null, existingUser);
     }
 
-    const user = await new User({ twitterID: profile.id }).save();
+    const user = await new User({
+      twitterID: profile.id,
+      username: profile.username,
+      displayName: profile.displayName
+    }).save();
     done(null, user);
   }
 ));

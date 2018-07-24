@@ -3,7 +3,8 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   twitterID: String,
-  credits: { type: Number, default: 0 }
+  username: String,
+  displayName: String
 });
 
 mongoose.model('users', userSchema);
