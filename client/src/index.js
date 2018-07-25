@@ -6,7 +6,7 @@ import reduxThunk from 'redux-thunk';
 
 import axios from 'axios';
 
-import './index.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import App from './components/App';
 import reducers from './reducers';
 

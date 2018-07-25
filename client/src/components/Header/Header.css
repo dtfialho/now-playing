@@ -1,0 +1,18 @@
+header {
+	background: #fff;
+	padding: 10px;
+}
+
+header .AppTitle {
+	color: #1da1f2;
+	font-size: 25px;
+	text-decoration: none;
+}
+
+header .LoginAction {
+	display: inline-block;
+	float: right;
+	padding: 0;
+	margin-bottom: 0;
+	list-style-type: none;
+}

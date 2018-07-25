@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import './Header.css';
+
 class Header extends Component {
   renderContent() {
     switch(this.props.auth) {
@@ -10,13 +12,13 @@ class Header extends Component {
       case false:
         return (
           <li>
-            <a href="/auth/twitter">Login With Twitter</a>
+            <a className="btn btn-primary" href="/auth/twitter">Login With Twitter</a>
           </li>
         );
       default:
         return (
           <li>
-            <a href="/api/logout">Logout</a>
+            <a className="btn btn-primary" href="/api/logout">Logout</a>
           </li>
         );
     }
@@ -24,17 +26,22 @@ class Header extends Component {
 
   render() {
     return (
-      <nav>
-        <div className="nav-wrapper">
-          <Link
-            to={ this.props.auth ? '/tweets' : '/' }>
-            #nowPlaying
-          </Link>
-          <ul className="right">
-            { this.renderContent() }
-          </ul>
+      <header>
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12">
+              <Link
+                className="AppTitle"
+                to={ this.props.auth ? '/tweets' : '/' }>
+                #nowPlaying
+              </Link>
+              <ul className="LoginAction">
+                { this.renderContent() }
+              </ul>
+            </div>
+          </div>
         </div>
-      </nav>
+      </header>
     );
   }
 }
