@@ -36,8 +36,36 @@ class Tweets extends Component {
             .map(tweet => {
               const url = this.convertVideoUrl(tweet.entities.urls[0].expanded_url);
               return (
-                <div className="TweetWrapper" key={tweet.id}>
-                  <iframe src={url}></iframe>
+                <div className="col-xs-12 col-md-10" key={tweet.id_str}>
+                  <div className="TweetWrapper">
+                    <div className="row">
+                      <div className="col-sm-6">
+                        <div className="VideoWrapper">
+                          <iframe src={url} title={tweet.id_str}></iframe>
+                        </div>
+                      </div>
+                      <div className="col-sm-6">
+                        <div className="TweetDetails">
+                          <div className="UserBlock">
+                            <figure>
+                              <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">
+                                <img src={tweet.user.profile_image_url_https} alt={tweet.user.name} />
+                              </a>
+                            </figure>
+                            <div className="User">
+                              <p className="Name">
+                                <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">{tweet.user.name}</a>
+                              </p>
+                              <p className="ScreenName">
+                                <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">@{tweet.user.screen_name}</a>
+                              </p>
+                            </div>
+                            <h3>{tweet.text}</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )
             });
@@ -47,8 +75,10 @@ class Tweets extends Component {
 
   render() {
     return (
-      <section className="container Tweets">
-        {this.renderTweets()}
+      <section className="Tweets">
+        <div className="row">
+          {this.renderTweets()}
+        </div>
       </section>
     );
   }

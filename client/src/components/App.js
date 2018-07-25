@@ -19,8 +19,10 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/tweets" component={Tweets} />
+            <main className="container">
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/tweets" component={Tweets} />
+            </main>
           </div>
         </BrowserRouter>
       </div>
