@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
-import { connect } from '../../../node_modules/react-redux';
+import { connect } from 'react-redux';
 
-import { fetchTweets } from '../../actions';
+import { fetchFriends, fetchTweets } from '../../actions';
 
 import './Tweets.css';
+import badgeCheck from './badge_check.svg';
+import twitterLogo from './twitter_logo.svg';
 
 class Tweets extends Component {
   componentDidMount() {
-    this.props.fetchTweets();
+    this.props.fetchTweets(123, 456);
+    this.props.fetchFriends();
+
+    const updateFriends = () => {
+      this.props.fetchFriends();
+    }
+
+    const updateTweets = () => {
+      this.props.fetchTweets();
+    }
+
+    window.setInterval(updateFriends.bind(this), 15000);
+    window.setInterval(updateTweets.bind(this), 15000);
   }
 
   convertVideoUrl(url) {
@@ -45,6 +59,28 @@ class Tweets extends Component {
         });
       })
     }, 2000);
+  }
+
+  renderFollowBtn(id) {
+    if (id && this.props.friends) {
+      if (this.props.friends.ids.includes(id)) {
+        return (
+          <button className="follow btn btn-primary">
+            <img src={twitterLogo} alt="Twitter logo" />
+            Unfollow
+          </button>
+        );
+      } else {
+        return (
+          <button className="follow btn btn-primary">
+            <img src={twitterLogo} alt="Twitter logo" />
+            Follow
+          </button>
+        );
+      }
+    }
+
+    return null;
   }
 
   renderTweets() {
@@ -86,12 +122,16 @@ class Tweets extends Component {
                               </a>
                             </figure>
                             <div className="User">
-                              <p className="Name">
-                                <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">{tweet.user.name}</a>
-                              </p>
-                              <p className="ScreenName">
-                                <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">@{tweet.user.screen_name}</a>
-                              </p>
+                              <div className="NameWrapper">
+                                <p className="Name">
+                                  <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">{tweet.user.name}</a>
+                                  <img src={badgeCheck} alt="badge" />
+                                  {this.renderFollowBtn(tweet.user.id)}
+                                </p>
+                                <p className="ScreenName">
+                                  <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">@{tweet.user.screen_name}</a>
+                                </p>
+                              </div>
                             </div>
                             <h3>{tweet.text}</h3>
                           </div>
@@ -117,8 +157,8 @@ class Tweets extends Component {
   }
 }
 
-function mapStateToProps({ tweets }) {
-  return { tweets };
+function mapStateToProps({ tweets, friends }) {
+  return { tweets, friends };
 }
 
-export default connect(mapStateToProps, { fetchTweets })(Tweets);
+export default connect(mapStateToProps, { fetchFriends, fetchTweets })(Tweets);

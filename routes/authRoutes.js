@@ -20,6 +20,7 @@ module.exports = app => {
   app.get('/api/current_user', (req, res) => {
     let { user } = req;
     if (!!user) {
+      user.token = undefined;
       user.tokenSecret = undefined;
     }
 

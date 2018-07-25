@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import './Header.css';
 
+import twitterLogo from '../Tweets/twitter_logo.svg';
+
 class Header extends Component {
   renderContent() {
     switch(this.props.auth) {
@@ -12,7 +14,10 @@ class Header extends Component {
       case false:
         return (
           <li>
-            <a className="btn btn-primary" href="/auth/twitter">Login With Twitter</a>
+            <a className="btn btn-primary" href="/auth/twitter">
+              <img src={twitterLogo} alt="Twitter Logo" />
+              Login With Twitter
+            </a>
           </li>
         );
       default:

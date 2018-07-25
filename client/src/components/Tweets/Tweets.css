@@ -60,8 +60,23 @@
 	font-size: 16px;
 }
 
+.TweetDetails .User .follow {
+  float: right;
+}
+
+.TweetDetails .User .Name .follow img {
+  width: 20px;
+  margin-right: 5px;
+  margin-left: 0;
+}
+
 .TweetDetails .ScreenName a {
 	text-decoration: none;
+}
+
+.TweetDetails .User .Name img {
+  width: 15px;
+  margin-left: 5px;
 }
 
 .night-mode .TweetDetails .User .Name a {

@@ -47,7 +47,6 @@ passport.use(new TwitterStrategy(
     }).save();
 
     user.set('tokenSecret', undefined, {strict: false} );
-    console.log(user)
 
     done(null, user);
   }

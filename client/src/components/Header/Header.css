@@ -22,6 +22,11 @@ header .LoginAction {
 	list-style-type: none;
 }
 
+header .LoginAction a img {
+	width: 20px;
+	margin-right: 5px;
+}
+
 .night-mode header {
 	background: #243447;
 }
