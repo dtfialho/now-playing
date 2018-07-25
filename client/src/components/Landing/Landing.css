@@ -1,0 +1,11 @@
+.Landing {
+  display: flex;
+  height: calc(100vh - 65px);
+}
+
+.Landing .Text {
+	width: 100%;
+  align-self: center;
+  text-align: center;
+  flex-shrink: 0;
+}
