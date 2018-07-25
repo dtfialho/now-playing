@@ -16,11 +16,14 @@ header .AppTitle {
 }
 
 header .LoginAction {
-	display: inline-block;
 	float: right;
 	padding: 0;
 	margin-bottom: 0;
 	list-style-type: none;
+}
+
+.night-mode header {
+	background: #243447;
 }
 
 @media (max-width: 320px) {

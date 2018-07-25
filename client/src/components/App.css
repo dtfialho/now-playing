@@ -4,19 +4,22 @@
   font-family: 'Lato', sans-serif;
 }
 
-html, body {
-  height: 100vh;
-  background: #e6ecf0;
+html,
+body {
+	background: #e6ecf0;
+	min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+body {
+	padding-top: 55px;
 }
 
 main.container {
-	padding-top: 65px;
 	background: #fff;
-	height: 100vh;
-}
-
-#root, .App, .App > div {
-	height: 100vh;
+	height: calc(100vh);
+	display: table;
 }
 
 .btn-primary {
@@ -37,9 +40,83 @@ main.container {
   transition: .1s;
 }
 
+.night-mode body {
+	background: #141d26;
+	color: #fff;
+}
+
+.night-mode main.container {
+	background: #1b2836;
+}
+
+.NightModeBtn {
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 0.75em;
+	box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.3) inset;
+	color: #fdea7b;
+	font-size: 1.5em;
+	display: inline-flex;
+	align-items: center;
+	margin: auto;
+	padding: 0.15em;
+	width: 3em;
+	height: 1.5em;
+	transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	position: fixed;
+	z-index: 9999;
+	right: 15px;
+	bottom: 15px;
+}
+
+.NightModeBtn:checked {
+  background-color: rgba(0,0,0,0.45);
+  box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.1) inset;
+}
+
+.NightModeBtn:before {
+	background-color: #d7d7d7;
+	border-radius: 50%;
+	width: 1.2em;
+	height: 1.2em;
+	transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+	z-index: 1;
+}
+
+.NightModeBtn:checked:before {
+	background-color: currentColor;
+  transform: translateX(125%);
+}
+
+.NightModeBtn:after {
+	background: linear-gradient(transparent 50%, rgba(0,0,0,0.15) 0) 0 50% / 50% 100%, repeating-linear-gradient(90deg,#bbb 0,#bbb,#bbb 20%,#999 20%,#999 40%) 0 50% / 50% 100%, radial-gradient(circle at 50% 50%,#888 25%, transparent 26%);
+	background-repeat: no-repeat;
+	border: 0.25em solid transparent;
+	border-left: 0.4em solid #d8d8d8;
+	border-right: 0 solid transparent;
+	transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+	transform: translateX(-22.5%);
+	transform-origin: 25% 50%;
+	width: 1.2em;
+	height: 1em;
+}
+
+.NightModeBtn:checked:after {
+	border-left-color: currentColor;
+	transform: translateX(-2.5%) rotateY(180deg);
+}
+
+.NightModeBtn:before,
+.NightModeBtn:after {
+	content: "";
+	display: block;
+}
+
 @media (max-width: 768px) {
 	main.container {
-		display: table;
 		width: 100%;
 	}
 }

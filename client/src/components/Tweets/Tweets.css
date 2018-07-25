@@ -1,9 +1,21 @@
 .Tweets {
-	padding-top: 10px;
+  height: 100%;
+}
+
+.NoTweets {
+  display: flex;
+  height: calc(100vh - 65px);
+}
+
+.NoTweets .Text {
+	width: 100%;
+  align-self: center;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .TweetWrapper {
-	margin-bottom: 20px;
+	margin: 10px 0;
 	padding: 10px;
 	border: 1px solid rgba(136,153,166,.5);
 	border-radius: .42857em;
@@ -14,6 +26,10 @@
 	height: 250px;
   border: none;
   margin: 0;
+}
+
+.TweetDetails .UserBlock {
+  padding-top: 10px;
 }
 
 .TweetDetails figure {
@@ -46,6 +62,14 @@
 
 .TweetDetails .ScreenName a {
 	text-decoration: none;
+}
+
+.night-mode .TweetDetails .User .Name a {
+  color: #fff;
+}
+
+.night-mode .TweetDetails .User .ScreenName a {
+  color: #8899a6;
 }
 
 @media (max-width: 768px) {
