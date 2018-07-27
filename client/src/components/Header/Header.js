@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './Header.css';
 
-import twitterLogo from '../Tweets/twitter_logo.svg';
+import twitterLogo from '../../assets/twitter_logo.svg';
 
 class Header extends Component {
   renderContent() {

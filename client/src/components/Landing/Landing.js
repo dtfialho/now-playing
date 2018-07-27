@@ -7,7 +7,8 @@ const Landing = () => {
     <section className="Landing">
       <div className="Text">
         <h2>
-          See youtube videos tweeted nearby!
+          Login with you Twitter account<br />
+          and see youtube videos tweeted nearby!
         </h2>
       </div>
     </section>

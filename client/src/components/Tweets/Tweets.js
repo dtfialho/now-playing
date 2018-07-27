@@ -4,24 +4,24 @@ import { connect } from 'react-redux';
 import { fetchFriends, fetchTweets } from '../../actions';
 
 import './Tweets.css';
-import badgeCheck from './badge_check.svg';
-import twitterLogo from './twitter_logo.svg';
+import badgeCheck from '../../assets/badge_check.svg';
+import twitterLogo from '../../assets/twitter_logo.svg';
 
 class Tweets extends Component {
   componentDidMount() {
     this.props.fetchTweets(123, 456);
     this.props.fetchFriends();
 
-    const updateFriends = () => {
-      this.props.fetchFriends();
-    }
+    // const updateFriends = () => {
+    //   this.props.fetchFriends();
+    // }
 
-    const updateTweets = () => {
-      this.props.fetchTweets();
-    }
+    // const updateTweets = () => {
+    //   this.props.fetchTweets();
+    // }
 
-    window.setInterval(updateFriends.bind(this), 15000);
-    window.setInterval(updateTweets.bind(this), 15000);
+    // window.setInterval(updateFriends.bind(this), 15000);
+    // window.setInterval(updateTweets.bind(this), 15000);
   }
 
   convertVideoUrl(url) {
