@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchFriends, fetchTweets } from '../../actions';
+import Tweet from './Tweet/Tweet';
 
 import './Tweets.css';
-import badgeCheck from '../../assets/badge_check.svg';
-import twitterLogo from '../../assets/twitter_logo.svg';
 
 class Tweets extends Component {
   componentDidMount() {
@@ -61,28 +60,6 @@ class Tweets extends Component {
     }, 2000);
   }
 
-  renderFollowBtn(id) {
-    if (id && this.props.friends) {
-      if (this.props.friends.ids.includes(id)) {
-        return (
-          <button className="follow btn btn-primary">
-            <img src={twitterLogo} alt="Twitter logo" />
-            Unfollow
-          </button>
-        );
-      } else {
-        return (
-          <button className="follow btn btn-primary">
-            <img src={twitterLogo} alt="Twitter logo" />
-            Follow
-          </button>
-        );
-      }
-    }
-
-    return null;
-  }
-
   renderTweets() {
     switch (this.props.tweets) {
       case null:
@@ -114,28 +91,9 @@ class Tweets extends Component {
                         </div>
                       </div>
                       <div className="col-sm-6">
-                        <div className="TweetDetails">
-                          <div className="UserBlock">
-                            <figure>
-                              <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">
-                                <img src={tweet.user.profile_image_url_https} alt={tweet.user.name} />
-                              </a>
-                            </figure>
-                            <div className="User">
-                              <div className="NameWrapper">
-                                <p className="Name">
-                                  <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">{tweet.user.name}</a>
-                                  <img src={badgeCheck} alt="badge" />
-                                  {this.renderFollowBtn(tweet.user.id)}
-                                </p>
-                                <p className="ScreenName">
-                                  <a href={`https://twitter.com/${tweet.user.screen_name}`} target="_blank">@{tweet.user.screen_name}</a>
-                                </p>
-                              </div>
-                            </div>
-                            <h3>{tweet.text}</h3>
-                          </div>
-                        </div>
+                        <Tweet
+                          tweet={tweet}
+                          friends={this.props.friends} />
                       </div>
                     </div>
                   </div>
