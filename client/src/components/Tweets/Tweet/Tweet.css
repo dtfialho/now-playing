@@ -40,13 +40,22 @@
     margin-left: 0;
   }
   
-  .TweetDetails .ScreenName a {
+  .TweetDetails p.ScreenName a {
       text-decoration: none;
+      color: #888;
   }
   
   .TweetDetails .User .Name img {
     width: 15px;
     margin-left: 5px;
+  }
+
+  .TweetDetails .TweetText {
+    margin-bottom: 0;
+  }
+
+  .TweetDetails .TweetPostedAt {
+    color: #888;
   }
   
   .night-mode .TweetDetails .User .Name a {
